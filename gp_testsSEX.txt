@@ -1,0 +1,2 @@
+primorial(x) = vecprod(primes([1,x]));
+write("certSEX.txt", primecertexport(primecert((3^7599*6+1)/45955409775032971), 1))

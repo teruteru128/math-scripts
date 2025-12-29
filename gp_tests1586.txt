@@ -1,0 +1,1 @@
+write("cert1586.txt", primecertexport(primecert((665!+345177717087933503)/62693), 1))

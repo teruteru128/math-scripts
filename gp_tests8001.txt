@@ -1,0 +1,1 @@
+write("cert8001.txt", primecertexport(primecert((10^8002-15)/85), 1))
