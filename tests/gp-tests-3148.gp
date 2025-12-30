@@ -1,7 +1,7 @@
 \\ --- 設定エリア ---
 target_n = (725^1112+1)/2447814795402456156782411218584674;
 output_file = "cert3148.txt";
-windows_dest = "windows:C:/Users/terut/OneDrive/Documents/gp/certs/";
+windows_dest = "windows:D:/repositories/teruteru128/gp/certs/";
 
 \\ --- 計測開始 ---
 start_time = gettime();
@@ -26,7 +26,7 @@ print("Elapsed time: ", elapsed_sec, " seconds.");
 
 \\ --- Windowsへの自動転送 (SSHが開通している前提) ---
 print("Sending result to Windows...");
-system(lsprintf("scp %s %s", output_file, windows_dest));
+system(strprintf("scp %s %s", output_file, windows_dest));
 
 print("All done.");
 quit;

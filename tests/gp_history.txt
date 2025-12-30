@@ -5,3 +5,10 @@ default(nbthreads)
 \r gp-tests-3148.gp 
 break
 \r gp-tests-3148.gp 
+break
+\q
+\r gp-tests-3500.gp 
+break
+default(nbthreads)
+default(nbthreads, 16)
+\r gp-tests-3500.gp 
