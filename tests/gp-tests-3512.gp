@@ -1,7 +1,7 @@
 \\ --- 設定エリア ---
-target_n = (10^3151 - 733) / 2254084809;
-output_file = "cert3142.txt";
-windows_dest = "windows:C:/Users/terut/Documents/Certificates/";
+target_n = (3^7370*78+1)/5221439;
+output_file = "cert3512.txt";
+windows_dest = "windows:C:/Users/terut/OneDrive/Documents/gp/certs/";
 
 \\ --- 計測開始 ---
 start_time = gettime();

@@ -1,2 +1,0 @@
-primorial(x) = vecprod(primes([1,x]));
-write("cert409.txt", primecertexport(primecert((primorial(1000)+518589483454007947)/6352219), 1))
