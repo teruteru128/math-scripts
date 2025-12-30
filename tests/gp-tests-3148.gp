@@ -29,4 +29,3 @@ print("Sending result to Windows...");
 system(strprintf("scp %s %s", output_file, windows_dest));
 
 print("All done.");
-quit;
