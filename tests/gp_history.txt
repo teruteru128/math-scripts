@@ -12,3 +12,7 @@ break
 default(nbthreads)
 default(nbthreads, 16)
 \r gp-tests-3500.gp 
+default(nbthreads, 16)
+\r gp-tests-3512.gp 
+break
+\q

@@ -1,6 +1,6 @@
 \\ --- 設定エリア ---
 target_n = (3^7370*78+1)/5221439;
-output_file = "cert3512.txt";
+output_file = "../certs/cert3512.txt";
 windows_dest = "windows:C:/Users/terut/OneDrive/Documents/gp/certs/";
 
 \\ --- 計測開始 ---
