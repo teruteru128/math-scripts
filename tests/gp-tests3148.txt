@@ -1,2 +1,0 @@
-primorial(x) = vecprod(primes([1,x]));
-write("cert3148.txt", primecertexport(primecert((725^1112+1)/2447814795402456156782411218584674), 1))
