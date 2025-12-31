@@ -16,3 +16,21 @@ default(nbthreads, 16)
 \r gp-tests-3512.gp 
 break
 \q
+default(nbthreads)
+\q
+\r gp-tests.gp 
+break
+\q
+\r gp-tests.gp 
+break
+\r gp-tests.gp 
+break
+\r gp-tests.gp 
+default(nbthreads)
+default(nbthreads, 16)
+default(nbthreads)
+\q
+\r gp-tests.gp 
+system("pwd")
+system("ls -al ../certs")
+\r gp-tests-3154.gp 

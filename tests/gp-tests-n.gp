@@ -1,6 +1,6 @@
 \\ --- 設定エリア ---
 target_n = (10^3151 - 733) / 2254084809;
-output_file = "cert3142.txt";
+output_file = "../certs/cert3142.txt";
 windows_dest = "windows:C:/Users/terut/OneDrive/Documents/gp/certs/";
 
 \\ --- 計測開始 ---
@@ -29,4 +29,3 @@ print("Sending result to Windows...");
 system(strprintf("scp %s %s", output_file, windows_dest));
 
 print("All done.");
-quit;
