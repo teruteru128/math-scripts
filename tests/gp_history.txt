@@ -34,3 +34,4 @@ default(nbthreads)
 system("pwd")
 system("ls -al ../certs")
 \r gp-tests-3154.gp 
+\q
