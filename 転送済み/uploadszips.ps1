@@ -20,7 +20,7 @@ foreach($file in get-childitem *.txt) {
         # curl.exe を実行 (--form でファイルを指定)
         # --retry は curl 自体のリトライ機能
         # --fail はエラー時に非ゼロの終了コードを返すためのオプション
-        curl.exe --fail --retry 2 `
+        curl.exe --fail --retry 10 `
         --cookie "fdbuser=$sessionId" `
         -F "cert=@$zipPath" -F "zip=on" $targetUrl
 
@@ -28,7 +28,8 @@ foreach($file in get-childitem *.txt) {
             Write-Host "Successfully uploaded: $zipPath" -ForegroundColor Green
             $success = $true
             # 送信成功後にZIPを削除する場合は以下を有効化
-            # Remove-Item $zipPath
+            Remove-Item $file
+            Remove-Item $zipPath
         } else {
             Write-Warning "Failed to upload $zipPath. Retrying in $retryDelay seconds..."
             if ($attempt -lt $maxRetries) { Start-Sleep -Seconds $retryDelay }
