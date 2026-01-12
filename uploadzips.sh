@@ -11,8 +11,8 @@ target_url="http://factordb.com/uploadcert.php" # 送信先URL
 max_retries=3                                   # 最大リトライ回数
 retry_delay=7                                   # リトライ間の待機秒数
 
-# カレントディレクトリ内の .txt ファイルをループ
-for file in *.txt; do
+# カレントディレクトリ内の cert*.txt ファイルをループ
+for file in cert*.txt; do
     # ファイルが存在しない場合のハンドリング
     [ -e "$file" ] || continue
 
@@ -45,7 +45,7 @@ for file in *.txt; do
             echo -e "\e[32mSuccessfully uploaded: $zip_path\e[0m"
             success=true
             # 送信成功後に元ファイルとZIPを削除
-            rm "$file"
+            mv "$file" ../転送済み/
             rm "$zip_path"
         else
             echo "Warning: Failed to upload $zip_path. Retrying in $retry_delay seconds..." >&2
