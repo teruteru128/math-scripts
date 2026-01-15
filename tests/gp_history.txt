@@ -45,3 +45,14 @@ break
 \r gp-tests.gp 
 break
 \r gp-tests.gp 
+\r gp-tests-4316 (1).gp 
+break
+\r 'gp-tests-4316 (1).gp' 
+break
+\r "gp-tests-4316 (1).gp"
+parisize
+\d parisize
+default("parisize")
+default("parisize", 17179869184)
+\r "gp-tests-4310 (1).gp"
+\q
