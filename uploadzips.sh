@@ -44,7 +44,7 @@ for file in cert*.txt; do
         if [ $? -eq 0 ]; then
             echo -e "\e[32mSuccessfully uploaded: $zip_path\e[0m"
             success=true
-            # 送信成功後に元ファイルとZIPを削除
+            # 送信成功後に元ファイルを移動しZIPを削除
             mv "$file" ../転送済み/
             rm "$zip_path"
         else
