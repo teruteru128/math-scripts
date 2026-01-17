@@ -7,7 +7,7 @@ if [ -z "$session_id" ]; then
     exit 1
 fi
 
-target_url="http://factordb.com/uploadcert.php" # 送信先URL
+target_url="https://factordb.com/uploadcert.php" # 送信先URL
 max_retries=3                                   # 最大リトライ回数
 retry_delay=7                                   # リトライ間の待機秒数
 

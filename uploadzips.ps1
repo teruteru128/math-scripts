@@ -3,7 +3,7 @@ if ([string]::IsNullOrWhiteSpace($sessionId)) {
     Write-Error "エラー: 環境変数 'FDB_SESSION_ID' が設定されていません。処理を中断します。"
     exit 1  # スクリプトを終了
 }
-$targetUrl = "http://factordb.com/uploadcert.php" # 送信先URL
+$targetUrl = "https://factordb.com/uploadcert.php" # 送信先URL
 $maxRetries = 3                                   # 最大リトライ回数
 $retryDelay = 7                                   # リトライ間の待機秒数
 foreach($file in get-childitem *.txt) {
