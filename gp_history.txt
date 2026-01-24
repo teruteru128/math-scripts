@@ -141,3 +141,4 @@ break
 break
 \r gp-tests3142.txt 
 \q
+\r gp-tests.gp

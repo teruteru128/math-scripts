@@ -12,7 +12,7 @@ max_retries=3                                   # 最大リトライ回数
 retry_delay=7                                   # リトライ間の待機秒数
 
 # カレントディレクトリ内の cert*.txt ファイルをループ
-for file in cert*.txt; do
+for file in certs/*cert3148.txt; do
     # ファイルが存在しない場合のハンドリング
     [ -e "$file" ] || continue
 
@@ -45,7 +45,7 @@ for file in cert*.txt; do
             echo -e "\e[32mSuccessfully uploaded: $zip_path\e[0m"
             success=true
             # 送信成功後に元ファイルを移動しZIPを削除
-            mv "$file" ../転送済み/
+            mv "$file" ./転送済み/
             rm "$zip_path"
         else
             echo "Warning: Failed to upload $zip_path. Retrying in $retry_delay seconds..." >&2
