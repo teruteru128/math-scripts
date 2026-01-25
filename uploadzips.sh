@@ -11,8 +11,8 @@ target_url="https://factordb.com/uploadcert.php" # 送信先URL
 max_retries=3                                   # 最大リトライ回数
 retry_delay=7                                   # リトライ間の待機秒数
 
-# カレントディレクトリ内の cert*.txt ファイルをループ
-for file in certs/*cert3148.txt; do
+# certs/ディレクトリ内の *cert3149.txt ファイルをループ
+for file in certs/*cert3149.txt; do
     # ファイルが存在しない場合のハンドリング
     [ -e "$file" ] || continue
 
