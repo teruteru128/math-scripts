@@ -7,14 +7,19 @@ if [ -z "$session_id" ]; then
     exit 1
 fi
 
+# 第1引数があればそれを使用し、なければデフォルトのパターンを使用
+# 引用符で囲まずに変数に代入することで、ループ時にワイルドカードを展開させます
+target_pattern="${1:-certs/*cert3149.txt}"
+
 target_url="https://factordb.com/uploadcert.php" # 送信先URL
 max_retries=3                                   # 最大リトライ回数
 retry_delay=7                                   # リトライ間の待機秒数
 
-# certs/ディレクトリ内の *cert3149.txt ファイルをループ
-for file in certs/*cert3149.txt; do
-    # ファイルが存在しない場合のハンドリング
-    [ -e "$file" ] || continue
+# 指定されたパターンに一致するファイルをループ
+# シェルの展開を利用するため、変数は引用符で囲みません
+for file in $target_pattern; do
+    # ファイルが存在しない（パターンに一致するものがない）場合のハンドリング
+    [ -e "$file" ] || { echo "対象ファイルが見つかりません: $target_pattern"; continue; }
 
     base_name="${file%.*}"
     zip_path="${base_name}.zip"
@@ -31,10 +36,6 @@ for file in certs/*cert3149.txt; do
         echo "Sending $zip_path (Attempt $attempt)..."
 
         # curl の実行
-        # --fail: HTTPエラー時にエラーコードを返す
-        # --retry: curl自体のリトライ機能
-        # -b: クッキーの指定
-        # -F: フォームデータの送信
         curl --fail --retry 10 \
              --cookie "fdbuser=$session_id" \
              -F "cert=@$zip_path" \
@@ -45,6 +46,8 @@ for file in certs/*cert3149.txt; do
             echo -e "\e[32mSuccessfully uploaded: $zip_path\e[0m"
             success=true
             # 送信成功後に元ファイルを移動しZIPを削除
+            # 移動先ディレクトリが存在することを確認
+            mkdir -p ./転送済み/
             mv "$file" ./転送済み/
             rm "$zip_path"
         else

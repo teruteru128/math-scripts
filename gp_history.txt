@@ -142,3 +142,26 @@ break
 \r gp-tests3142.txt 
 \q
 \r gp-tests.gp
+break
+q
+\q
+\r gp-tests.gp 
+break
+\r gp-tests.gp 
+break
+\q
+\r tests/gp-tests.gp
+break
+\r tests/gp-tests.gp
+break
+\r tests/gp-tests.gp
+break
+\r tests/gp-tests.gp
+break
+\r tests/gp-tests.gp
+break
+\r tests/gp-tests.gp
+break
+q
+\q
+\r tests/gp-tests.gp
