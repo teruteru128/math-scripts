@@ -165,3 +165,16 @@ break
 q
 \q
 \r tests/gp-tests.gp
+break
+\r tests/gp-tests.gp
+break
+\r tests/gp-tests.gp
+break
+\r tests/gp-tests.gp
+break
+q
+\q
+\r tests/gp-tests.gp
+break
+\q
+\r tests/gp-tests.gp
