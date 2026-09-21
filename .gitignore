@@ -24,3 +24,10 @@ tags
 *.log
 cert*.txt
 *cert*.txt
+*.primo
+
+# ECPP証明書。生成物で1本1.5MB前後あり、factordbへ登録済みなのでgitには入れない。
+# `*cert*.txt` は上にあるが、拡張子の無い `NNNN-certDDDD` 形式が素通りしていた。
+*-cert*
+primo_*
+転送済み/
