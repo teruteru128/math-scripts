@@ -1,0 +1,58 @@
+mersenneforum.org の Factoring 板へ投稿するための下書き。
+数値は 2026-09-21 時点。投稿前に ECM の進捗を更新すること
+(カーブ数は study/1148_ecm_{45,50}digits.txt の "Using B1=" 行を数える)。
+
+--------------------------------------------------------------------------
+
+Subject: SNFS reservation & help request: 21181 * 2^1148 + 1 (350 digits)
+
+Hello everyone,
+
+I would like to reserve the Proth number 21181 * 2^1148 + 1 (350 digits) for
+SNFS factorization, and to ask for help with the sieving phase.
+
+This is one of the remaining Sierpinski candidates (21181), so the number has
+some interest beyond being a factoring target.
+
+Polynomial (degree 6, SNFS difficulty 350 ~= GNFS 206 digits):
+
+n: 80980691789124611155444883210406031221519104431238722792636794746853132438688985575860472817132750033315118906255487194678636640998001294182794771209471953916033225125558190981682394868499683133636430663373503576109276416087690785613414280450161923992363972047744835847805308996566564060752026322076226801043386985296817778805571701626866404725620737
+skew: 1.0
+c0: 1
+c6: 84724
+Y0: -3138550867693340381917894711603833208051177722232017256448
+Y1: 1
+# MurphyE = 1.777e-17
+# f(x) = 84724*x^6+1
+# g(x) = x-3138550867693340381917894711603833208051177722232017256448
+
+Note: 84724 = 21181 * 2^2 and 2^191 = 3138550867693340381917894711603833208051177722232017256448,
+so f(2^191) = 21181 * 2^1148 + 1 exactly.
+
+Current status:
+
+- ECM pre-screening with GMP-ECM 7.0.5, no factor found so far:
+    B1=11e6  (t45 level): 160 curves
+    B1=43e6  (t50 level): 800 curves  <- currently running to 17769 curves
+- CADO-NFS sieving started locally; about 1 million relations accumulated
+  (q-range starting around 40000000). I can share these relation files.
+- The estimated requirement is around 4.4 billion relations, which my machine
+  (8 physical cores, shared with other long-running jobs) cannot reach in any
+  reasonable time.
+
+If anyone has spare CPU time and is interested in this number, help with the
+sieving phase would be very much appreciated. I will keep the ECM going in the
+meantime and report here if a factor turns up.
+
+Thank you!
+
+--------------------------------------------------------------------------
+
+投稿前に確認すること
+
+- ECM のカーブ数を実際の値に更新する
+- t50 完走後なら「ECM t50 complete, no factor found」と書けるので、
+  ECM の依頼は不要になり、いきなり篩の話に入れる
+- factordb には「どこまで ECM を掛けたか」を記録する仕組みが無いため、
+  この投稿自体が唯一の公開記録になる。二重作業を防ぐ意味でも数値は正確に
+- relation ファイルを共有するなら置き場所を決めておく
