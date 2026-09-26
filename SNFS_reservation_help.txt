@@ -1,5 +1,5 @@
 mersenneforum.org の Factoring 板へ投稿するための下書き。
-数値は 2026-09-21 時点。投稿前に ECM の進捗を更新すること
+数値は 2026-09-21 時点(多項式の skew と MurphyE は 2026-09-27 に再計算)。投稿前に ECM の進捗を更新すること
 (カーブ数は study/1148_ecm_{45,50}digits.txt の "Using B1=" 行を数える)。
 
 --------------------------------------------------------------------------
@@ -17,14 +17,28 @@ some interest beyond being a factoring target.
 Polynomial (degree 6, SNFS difficulty 350 ~= GNFS 206 digits):
 
 n: 80980691789124611155444883210406031221519104431238722792636794746853132438688985575860472817132750033315118906255487194678636640998001294182794771209471953916033225125558190981682394868499683133636430663373503576109276416087690785613414280450161923992363972047744835847805308996566564060752026322076226801043386985296817778805571701626866404725620737
-skew: 1.0
+skew: 0.155
 c0: 1
 c6: 84724
 Y0: -3138550867693340381917894711603833208051177722232017256448
 Y1: 1
-# MurphyE = 1.777e-17
+# MurphyE(Bf=2e9, Bg=2e9, area=1e20) = 6.454e-13
+# MurphyE(Bf=1e7, Bg=5e6, area=1e16) = 1.968e-17  (CADO-NFS score defaults)
 # f(x) = 84724*x^6+1
 # g(x) = x-3138550867693340381917894711603833208051177722232017256448
+
+The skew is the L2-optimal value from CADO-NFS's skewness tool.
+
+I also compared other degrees (all with optimized skew). Since 1148 = 7*164,
+the degree-7 polynomial 21181*x^7+1 (m = 2^164) is also available, and it
+scores higher with the small CADO-NFS defaults. At bounds suitable for a job
+of this size, however, degree 6 is clearly the best:
+
+  Bf / Bg / area         degree 5    degree 6    degree 7
+  1e7 / 5e6 / 1e16       1.19e-18    1.97e-17    4.58e-17
+  5e8 / 5e8 / 1e18       8.85e-14    3.59e-13    3.50e-13
+  2e9 / 2e9 / 1e20       2.75e-13    6.45e-13    4.02e-13
+  4e9 / 4e9 / 1e21       4.52e-13    8.32e-13    4.24e-13
 
 Note: 84724 = 21181 * 2^2 and 2^191 = 3138550867693340381917894711603833208051177722232017256448,
 so f(2^191) = 21181 * 2^1148 + 1 exactly.
