@@ -1,20 +1,24 @@
 mersenneforum.org の Factoring 板へ投稿するための下書き。
-数値は 2026-09-21 時点(多項式の skew と MurphyE は 2026-09-27 に再計算)。投稿前に ECM の進捗を更新すること
-(カーブ数は study/1148_ecm_{45,50}digits.txt の "Using B1=" 行を数える)。
+数値は 2026-09-21 時点(多項式の skew と MurphyE は 2026-09-27 に再計算)。
+2026-09-27 に方針を「篩の協力依頼」から「ECM の状況報告と、既存の ECM 作業の有無の確認」に変更した。
+<...> の箇所は投稿時に埋める(カーブ数は study/1148_ecm_{45,50}digits.txt の "Using B1=" 行を数える)。
 
 --------------------------------------------------------------------------
 
-Subject: SNFS reservation & help request: 21181 * 2^1148 + 1 (350 digits)
+Subject: 21181 * 2^1148 + 1 (350 digits): ECM status and SNFS plan
 
 Hello everyone,
 
-I would like to reserve the Proth number 21181 * 2^1148 + 1 (350 digits) for
-SNFS factorization, and to ask for help with the sieving phase.
+I have been working on the Proth number 21181 * 2^1148 + 1 (350 digits,
+composite, no known factors in factordb), and I would like to report my ECM
+effort so far and reserve the number for further ECM and an eventual SNFS.
 
-This is one of the remaining Sierpinski candidates (21181), so the number has
-some interest beyond being a factoring target.
+(k = 21181 is one of the remaining Sierpinski candidates, but this n is
+already known to be composite, so factoring it has no bearing on the
+Sierpinski problem. It is simply a factoring target I picked.)
 
-Polynomial (degree 6, SNFS difficulty 350 ~= GNFS 206 digits):
+Polynomial (degree 6, SNFS difficulty 349.9; GNFS equivalent about 206 digits
+by the asymptotic L-complexity, about 226 digits by the usual 0.56d+30 rule):
 
 n: 80980691789124611155444883210406031221519104431238722792636794746853132438688985575860472817132750033315118906255487194678636640998001294182794771209471953916033225125558190981682394868499683133636430663373503576109276416087690785613414280450161923992363972047744835847805308996566564060752026322076226801043386985296817778805571701626866404725620737
 skew: 0.155
@@ -45,18 +49,24 @@ so f(2^191) = 21181 * 2^1148 + 1 exactly.
 
 Current status:
 
-- ECM pre-screening with GMP-ECM 7.0.5, no factor found so far:
-    B1=11e6  (t45 level): 160 curves
-    B1=43e6  (t50 level): 800 curves  <- currently running to 17769 curves
-- CADO-NFS sieving started locally; about 1 million relations accumulated
-  (q-range starting around 40000000). I can share these relation files.
-- The estimated requirement is around 4.4 billion relations, which my machine
-  (8 physical cores, shared with other long-running jobs) cannot reach in any
-  reasonable time.
+- ECM with GMP-ECM 7.0.5 (default B2), no factor found so far:
+    B1=11e6: 160 curves
+    B1=43e6: <N> curves (of 17769 for t50)
+- CADO-NFS test sieving: about 1 million relations (q starting around
+  40000000). The estimated requirement is around 4.4 billion relations.
 
-If anyone has spare CPU time and is interested in this number, help with the
-sieving phase would be very much appreciated. I will keep the ECM going in the
-meantime and report here if a factor turns up.
+I am aware that this is far from the usual ECM depth before an SNFS (the rule
+of thumb of about 2/9 of the SNFS difficulty would mean around t75), and that
+an SNFS of this difficulty is at NFS@Home scale rather than something my
+single machine (8 physical cores) can sieve. So the SNFS is a long-term plan,
+and for now I would like to ask:
+
+1. Has anyone already run ECM on this number? factordb has no way to record
+   ECM effort, so any unreported curves would help avoid duplicated work.
+2. If anyone would like to contribute ECM curves, please post the B1 values
+   and curve counts here, and I will keep a running total.
+
+I will report here if a factor turns up.
 
 Thank you!
 
@@ -64,9 +74,12 @@ Thank you!
 
 投稿前に確認すること
 
-- ECM のカーブ数を実際の値に更新する
-- t50 完走後なら「ECM t50 complete, no factor found」と書けるので、
-  ECM の依頼は不要になり、いきなり篩の話に入れる
+- <N>(B1=43e6 のカーブ数)を実際の値に更新する。t50 完走後なら
+  「B1=43e6: 17769 curves (t50 complete)」と書ける
+- t50 を完走しても SNFS 前の ECM としてはまだ浅い(目安は SNFS difficulty の
+  2/9 程度 = t75 前後)。篩の協力依頼は、ECM が t60〜t65 程度まで進んでから
+  改めて検討する
+- SNFS 350 は記録級に近い規模。本気で篩うなら NFS@Home への持ち込みが
+  現実的な唯一の選択肢
 - factordb には「どこまで ECM を掛けたか」を記録する仕組みが無いため、
   この投稿自体が唯一の公開記録になる。二重作業を防ぐ意味でも数値は正確に
-- relation ファイルを共有するなら置き場所を決めておく
